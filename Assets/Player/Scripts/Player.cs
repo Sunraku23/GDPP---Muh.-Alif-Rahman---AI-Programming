@@ -9,6 +9,9 @@ public class NewMonoBehaviourScript : MonoBehaviour
     {
         float horizontal = Input.GetAxis("Horizontal");
         float Vertical = Input.GetAxis("Vertical");
+
+        Vector3 movementDirection = new Vector3(horizontal, 0, Vertical);
+
         Debug.Log("Horizontal" + horizontal);
         Debug.Log("Vertical" +  Vertical);
     }
