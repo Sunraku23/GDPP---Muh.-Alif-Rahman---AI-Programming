@@ -10,10 +10,19 @@ public class NewMonoBehaviourScript : MonoBehaviour
     [SerializeField]
     private Camera cam;
 
+
+
     //Method Awake ini akan jalan ketika game start   
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        HideandLockCursor();
+    }
+
+    private void HideandLockCursor()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
@@ -33,8 +42,6 @@ public class NewMonoBehaviourScript : MonoBehaviour
         Vector3 movementDirection = hrDirection + vrDirection;
 
         rb.linearVelocity = movementDirection * _speed * Time.fixedDeltaTime; 
-        Debug.Log("Horizontal" + horizontal);
-        Debug.Log("Vertical" +  Vertical);
 
 
     }
