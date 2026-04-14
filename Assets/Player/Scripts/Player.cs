@@ -3,9 +3,12 @@ using UnityEngine;
 public class NewMonoBehaviourScript : MonoBehaviour
 {
     [SerializeField]
-    private float speed;
+    private float _speed;
 
     private Rigidbody rb;
+
+    [SerializeField]
+    private Camera cam;
 
     //Method Awake ini akan jalan ketika game start   
     private void Awake()
@@ -20,10 +23,19 @@ public class NewMonoBehaviourScript : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal");
         float Vertical = Input.GetAxis("Vertical");
 
-        Vector3 movementDirection = new Vector3(horizontal, 0, Vertical);
+        // horizontal cam direction
+        Vector3 hrDirection = horizontal * cam.transform.right;
+        // Vertical cam direction
+        Vector3 vrDirection = Vertical * cam.transform.forward;
+        hrDirection.y = 0;
+        vrDirection.y = 0;
 
-        rb.linearVelocity = movementDirection * speed * Time.fixedDeltaTime; 
+        Vector3 movementDirection = hrDirection + vrDirection;
+
+        rb.linearVelocity = movementDirection * _speed * Time.fixedDeltaTime; 
         Debug.Log("Horizontal" + horizontal);
         Debug.Log("Vertical" +  Vertical);
+
+
     }
 }
