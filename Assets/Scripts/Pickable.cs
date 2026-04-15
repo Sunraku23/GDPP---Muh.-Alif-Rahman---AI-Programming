@@ -10,7 +10,7 @@ public class Pickable : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("TWinggg" + PickableType);
+            
             OnPicked(this);
             Destroy(gameObject);
         }

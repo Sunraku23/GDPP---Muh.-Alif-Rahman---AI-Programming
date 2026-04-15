@@ -19,13 +19,13 @@ public class PickableManager : MonoBehaviour
             _pickablelist.Add(pickableObjects[i]);
             pickableObjects[i].OnPicked += OnPickablePicked; 
         }
-        Debug.Log("pickable List: " + _pickablelist.Count);
+        
     }
 
     private void OnPickablePicked(Pickable pickable)
     {
         _pickablelist.Remove(pickable);
-        Debug.Log("pickable List: " + _pickablelist.Count);
+        
         if (_pickablelist.Count <= 0)
         {
             Debug.Log("Win");
