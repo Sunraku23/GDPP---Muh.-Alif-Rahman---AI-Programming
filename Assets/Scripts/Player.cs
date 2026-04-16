@@ -1,16 +1,48 @@
+using System.Collections;
 using UnityEngine;
+using System;
 
-public class NewMonoBehaviourScript : MonoBehaviour
+public class Player: MonoBehaviour
 {
+    public Action OnpowerUpStart;
+    public Action OnpowerUpStop;
+
     [SerializeField]
     private float _speed;
 
     private Rigidbody rb;
-
+        
     [SerializeField]
     private Camera cam;
 
+    [SerializeField]
+    private float _powerupDuration;
 
+    private Coroutine _powerUpCourotine;
+
+    public void PickPowerUp()
+    {
+        if(_powerUpCourotine != null)
+        {
+            StopCoroutine(_powerUpCourotine);
+        }
+
+        _powerUpCourotine = StartCoroutine(StartPowerUp());
+    }
+
+    private IEnumerator StartPowerUp()
+    {
+        if (OnpowerUpStart != null)
+        {
+            OnpowerUpStart();
+        }
+        yield return new WaitForSeconds(_powerupDuration);
+        Debug.Log("Weakk");
+        if (OnpowerUpStop != null) 
+        {
+            OnpowerUpStop();
+        }
+    }
 
     //Method Awake ini akan jalan ketika game start   
     private void Awake()
@@ -18,6 +50,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         HideandLockCursor();
     }
+
 
     private void HideandLockCursor()
     {

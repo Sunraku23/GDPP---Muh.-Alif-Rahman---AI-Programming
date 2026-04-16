@@ -2194,8 +2194,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bf25f01c17141b4d9e6a5394f879127, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
-  _speed: 100
+  _speed: 250
   cam: {fileID: 330585545}
+  _powerupDuration: 5
 --- !u!54 &244901036
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6517,6 +6518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cac25cfc09899ab479ac0d227ce403bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickableManager
+  _player: {fileID: 244901035}
 --- !u!4 &496751426
 Transform:
   m_ObjectHideFlags: 0
@@ -11544,6 +11546,9 @@ MonoBehaviour:
   - {fileID: 1100362051}
   - {fileID: 203292726}
   - {fileID: 1695251386}
+  ChaseDistance: 3
+  Player: {fileID: 244901035}
+  NavMeshAgent: {fileID: 0}
 --- !u!195 &1135205522
 NavMeshAgent:
   m_ObjectHideFlags: 0

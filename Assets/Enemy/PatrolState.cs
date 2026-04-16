@@ -11,6 +11,11 @@ public class PatrolState :  BaseState
 
     public void UpdateState(Enemy enemy)
     {
+        if(Vector3.Distance(enemy.transform.position, enemy.Player.transform.position) < enemy.ChaseDistance)
+        {
+            enemy.SwitchState(enemy.ChaseState);
+        }
+
         if (!_isMoving)
         {
             _isMoving=true;
@@ -25,6 +30,8 @@ public class PatrolState :  BaseState
                 _isMoving = false;
             }
         }
+
+        
     }
 
     public void ExitState(Enemy enemy)
